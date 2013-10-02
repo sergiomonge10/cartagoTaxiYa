@@ -1,5 +1,5 @@
 from django.db import models
-from cabbie.models import Client
+from client.models import Client
 
 # Create your models here.
 
@@ -44,11 +44,11 @@ class TypeCar(models.Model):
 class Route(models.Model):
 	client = models.ForeignKey(Client)
 	driver = models.ForeignKey('Driver')
-	date = models.DateTimeField(add_auto_now=True)
+	date = models.DateTimeField(auto_now_add=True)
 	enable = models.BooleanField(default=True)
 	origin = models.CharField(max_length=100)
 	destination = models.CharField(max_length=100)
 
 	def __unicode__(self):
-		return %s %s %s (self.origin, self.destination, self.driver)
+		return self.driver
 
