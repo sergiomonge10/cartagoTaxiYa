@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class Company(models.Model):
 	name = models.CharField(max_length=100)
 	user = models.OneToOneField(User)
-	logo = models.ImageField(blank=True, null=True)
+	logo = models.ImageField(upload_to='logos', blank=True)
 	phone = models.CharField(max_length=30, null=True, blank=True)
 	city = models.CharField(max_length=30, null=True, blank=True)
 	country = models.CharField(max_length=30)

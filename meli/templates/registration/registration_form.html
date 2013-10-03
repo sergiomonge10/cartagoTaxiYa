@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block top2 %}
+
+<h2>Create a new account</h2>
+
+<form method="post" action=".">
+  {% csrf_token %}
+  {{ form.as_p }} 
+
+<input class="button" type="submit" value="{% trans 'Submit' %}" />
+</form>
+{% endblock %}
+
+{% block sidebar %}
+
+{% endblock %}
