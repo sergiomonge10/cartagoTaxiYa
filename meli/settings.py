@@ -1,5 +1,6 @@
 # Django settings for meli project.
 import os
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
