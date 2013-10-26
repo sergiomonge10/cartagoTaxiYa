@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}Company{% endblock %}
+
+{% block head %}
+  <!-- Bootstrap core CSS -->
+    <link href="../media/template1/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="../media/template1/css/stylish-portfolio.css" rel="stylesheet">
+    <link href="../media/template1/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+	</br></br></br>
+	<div class="row">
+		<div class="container">
+			<div class="col-md-10 ">
+				<ul class="media-list">
+				  	<li class="media">
+					    <a class="pull-left" href="#">
+					      <img class="media-object" src="/media/{{company.logo}}" alt="{{company.name}}" width="50%">
+					    </a>
+					    <div class="media-body">
+					      <h1 class="media-heading">Bienvenido {{company.name}}</h1>
+			   			 </div>
+		  			</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	</br>
+
+	<div id="intro" class="intro">
+		<div class="container">
+	    	<div class="row">
+	          <div class="col-md-8 text-center">
+	            <h2>Taxistas con el sistema</h2>
+	          </div>
+	          <div class="col-md-4 text-center">
+	            <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+				<button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
+	          </div>
+	        </div>
+	    </div>
+	</div>
+
+		
+
+
+{% endblock %}
