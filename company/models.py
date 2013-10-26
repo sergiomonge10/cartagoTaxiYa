@@ -16,4 +16,4 @@ class Company(models.Model):
 	enable = models.BooleanField(default=True)
 
 	def __unicode__(self):
-		return self.name
+		return u"Nombre:  %s - Usuario: %s " % (self.name, self.user.username)
