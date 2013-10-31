@@ -22,26 +22,53 @@
 					    <a class="pull-left" href="#">
 					      <img class="media-object" src="/media/{{company.logo}}" alt="{{company.name}}" width="50%">
 					    </a>
-					    <div class="media-body">
+					    <div class="media-body text-center">
 					      <h1 class="media-heading">Bienvenido {{company.name}}</h1>
+					      <hr>
 			   			 </div>
 		  			</li>
 				</ul>
 			</div>
 		</div>
 	</div>
-	</br>
 
 	<div id="intro" class="intro">
 		<div class="container">
 	    	<div class="row">
-	          <div class="col-md-8 text-center">
-	            <h2>Taxistas con el sistema</h2>
-	          </div>
-	          <div class="col-md-4 text-center">
-	            <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
-				<button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
-	          </div>
+		    	<div class="col-md-2 text-center">
+		    		<div class="container">
+		    			<a href="/cabbie/add/driver" class="btn btn-default">Agregar Nuevo Taxista</a>
+		    		</div>
+		    	</div>
+		        <div class="col-md-8 text-center">
+		            <h2>Taxistas con el sistema</h2>
+		            <table width="100%" class="table table-hover">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Apellido</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+						{% for d in driver %}
+						<tr>
+							<td>{{d.name}}</td>
+							<td>{{d.lastname}}</td>
+							<td>
+								<a href="/manage/{{msl.sname}}" class="btn btn-default btn-lg">Editar</a>
+								<a href="/manage/{{msl.sname}}/category" class="btn btn-danger btn-lg">Eliminar</a>
+							</td>
+						</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+	          	</div>
+	          	<div class="col-md-1 text-center">
+		    		<div class="container">
+
+		    		</div>
+		    	</div>
 	        </div>
 	    </div>
 	</div>
