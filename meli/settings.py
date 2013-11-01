@@ -12,12 +12,14 @@ MANAGERS = ADMINS
 
 PROJECT_ROOT = os.path.dirname(__file__)
 
+GCM_APIKEY = "<api_key>"
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'meli',                      # Or path to database file if using sqlite3.
         'USER': 'root',                      # Not used with sqlite3.
-        'PASSWORD': 'root',                  # Not used with sqlite3.
+        'PASSWORD': '280690',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -133,6 +135,8 @@ INSTALLED_APPS = (
     'cabbie',
     'client',
     'company',
+    'rest_framework',
+    'gcm',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -162,4 +166,20 @@ LOGGING = {
             'propagate': True,
         },
     }
+}
+
+
+
+
+REST_FRAMEWORK = {
+    # Use hyperlinked styles by default.
+    # Only used if the `serializer_class` attribute is not set on a view.
+    #'DEFAULT_MODEL_SERIALIZER_CLASS':
+    #    'rest_framework.serializers.HyperlinkedModelSerializer',
+
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissions'
+    ]
 }
