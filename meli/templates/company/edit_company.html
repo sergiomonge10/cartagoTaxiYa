@@ -38,7 +38,7 @@
 		    	</div>
 		    </div>
 		    <div class="col-md-8">
-		        <form action="." method="POST" class="form">
+		        <form action="." method="POST" class="form" enctype="multipart/form-data">
 					{% csrf_token %}
 					{{ form|bootstrap }}
 					<br/><br/>

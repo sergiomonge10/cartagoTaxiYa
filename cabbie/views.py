@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from cabbie.forms import editDriverForm, editCarForm
 from django.views.generic.create_update import create_object, delete_object,update_object
 from company.models import Company
+from django.http import HttpResponse, HttpResponseBadRequest
+
 
 @login_required
 def add_driver_view(request):
@@ -65,3 +67,10 @@ def edit_Car_view(request):
         extra_context = {'car':car},
         post_save_redirect = "/company",
 	)
+
+from django.core import serializers
+def get_drivers(request):
+    company = Company.objects.get(user=request.user)
+    drivers = Driver.objects.filter(company=company)
+    data = serializers.serialize('json', drivers)
+    return HttpResponse(data, mimetype='application/json')

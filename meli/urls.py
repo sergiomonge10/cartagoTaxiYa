@@ -41,11 +41,7 @@ router.register(r'routers', DriverViewSet)
 urlpatterns = patterns('',
     # Uncomment the admin/doc line below to enable admin documentation:
     #url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-<<<<<<< HEAD
-=======
-
     url(r'^cabbie/', include('cabbie.urls')),
->>>>>>> 3993a386557e2a79919aa265f26640f1b5bbcbcd
     url(r'^company/', include('company.urls')),
 
     url(r'^$', direct_to_template, { 'template': 'index.html' }, 'index'),
