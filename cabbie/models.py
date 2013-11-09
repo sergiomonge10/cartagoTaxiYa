@@ -11,6 +11,7 @@ class Driver(models.Model):
 	phone = models.CharField(max_length=20)
 	enable = models.BooleanField(default=True)
 	company = models.ForeignKey(Company)
+	car =  models.ManyToManyField('Car',null=True, blank=True)
 
 	def __unicode__(self):
 		return self.nid
@@ -18,7 +19,6 @@ class Driver(models.Model):
 #Este es el carro o el taxi
 class Car(models.Model):
 	number = models.CharField(max_length=20)
-	driver = models.ForeignKey('Driver')
 	type_car = models.ForeignKey('TypeCar',null=True, blank=True)
 	reader_card = models.BooleanField(default=True)
 

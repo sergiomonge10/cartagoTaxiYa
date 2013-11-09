@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Borrar Taxista{%endblock%}
+
+{% block content %}
+
+
+<div class="container">
+
+	<h1>Borrar Taxista</h1>
+	<hr>
+	<br/>
+
+	{% if info %}
+	<span class="alert label">{{ info }}</span>
+	{% endif %}
+
+	<form action="." method="POST" class="form">
+		{% csrf_token %}
+		<h3>¿Está seguro que quiere borrar este taxista ? </h3> </br>
+		<input class="btn btn-warning btn-lg" type="submit" value="Si">
+		<a class="btn btn-primary btn-lg" href="javascript:window.history.go(-1);">No</a>
+	</form>
+	</br></br></br></br>
+</div>	
+	
+	
+
+{% endblock %}

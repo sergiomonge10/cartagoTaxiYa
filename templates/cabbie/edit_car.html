@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}Editar Taxi{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+{% load bootstrap %}
+
+{% block content %}
+
+</br></br></br>
+<div class="row">
+	<div class="container">
+		<div class="col-md-10 ">
+			<ul class="media-list">
+				<li class="media">
+					<a class="pull-left" href="#">
+					    <img class="media-object" src="/media/{{company.logo}}" alt="{{company.name}}" width="50%">
+					</a>
+					<div class="media-body text-center">
+					    <h1 class="media-heading">Edición del taxi No. {{car.number}}</h1>
+					    	<hr>
+			   		</div>
+		  		</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div id="intro" class="intro">
+	<div class="container">
+	    <div class="row">
+		    <div class="col-md-2 ">
+		    	<div class="container">
+		    	</div>
+		    </div>
+		    <div class="col-md-8">
+		        <form action="." method="POST" class="form">
+					{% csrf_token %}
+					{{ form|bootstrap }}
+					<br/><br/>
+					<input class="btn btn-primary" type="submit" value="Guardar">
+					<a class="btn btn-default" href="/company">Cancelar</a>
+				</form>
+	        </div>
+	    </div>
+	</div>
+</div>
+
+{% endblock %}

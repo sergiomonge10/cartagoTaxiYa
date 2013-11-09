@@ -1,0 +1,21 @@
+{% load i18n %}
+
+
+Activacion de la cuenta en {{ site.name }}:
+
+
+Hemos enviado este correo electrónico porque usted ha solicitado una cuenta. Para
+activarla, debe hacer clic en el siguiente enlance o pegarlo en su navegador
+favorito:
+
+http://{{ site.domain }}{% url registration_activate activation_key %}
+
+El link es válido sólo por {{ expiration_days }} days.
+
+
+La cuenta de la que hemos enviado este correo electrónico, no admite respuestas.
+
+
+--
+El equipo de 4Geeks
+
