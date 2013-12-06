@@ -3,6 +3,8 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('cabbie.views',
 
+	url(r'^update/location/$', view="update_location_driver"),
+
 	url(r'^delete/(?P<nid>[-\w]+)/$', view='delete_driver_view',name='delete_driver'),
 
 	url(r'^edit/car/(?P<number>[-\w]+)',view="edit_car_view",name="car"),

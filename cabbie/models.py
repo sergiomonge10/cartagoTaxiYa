@@ -12,6 +12,7 @@ class Driver(models.Model):
 	enable = models.BooleanField(default=True)
 	company = models.ForeignKey(Company)
 	car =  models.ManyToManyField('Car',null=True, blank=True)
+	device = models.OneToOneField('gcm.Device',null=True, blank=True)
 
 	def __unicode__(self):
 		return self.nid
@@ -46,3 +47,20 @@ class Route(models.Model):
 	def __unicode__(self):
 		return self.driver
 
+class DriverLocation(models.Model):
+	driver = models.OneToOneField('Driver')
+	latitude = models.CharField(max_length=300)
+	longitude = models.CharField(max_length=300)
+	city = models.CharField(max_length=300)
+	country = models.CharField(max_length=300)
+
+	def __unicode__(self):
+		return self.driver.name
+
+class Driver_Decision(models.Model):
+	driver = models.OneToOneField('Driver')
+	decision = models.BooleanField(default=False)
+
+	def __unicode__(self):
+		return self.driver.name
+		

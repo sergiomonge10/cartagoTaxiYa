@@ -1,4 +1,4 @@
-from cabbie.models import Driver, Car, TypeCar
+from cabbie.models import Driver, Car, TypeCar, DriverLocation
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
@@ -6,7 +6,7 @@ from cabbie.forms import editDriverForm, editCarForm
 from django.views.generic.create_update import create_object, delete_object,update_object
 from company.models import Company
 from django.http import HttpResponse, HttpResponseBadRequest
-
+from django.views.decorators.csrf import csrf_exempt
 
 @login_required
 def add_driver_view(request):
@@ -148,8 +148,11 @@ def get_drivers(request):
         # ...etc
         # append the dictionary of each dog to the list
         to_json.append(dr_dict)
+    #create json
+    list_types = {}
+    list_types['Driver'] = to_json
     # convert the list to JSON
-    response_data = simplejson.dumps(to_json)
+    response_data = simplejson.dumps(list_types)
     # return an HttpResponse with the JSON and the correct MIME type
     return HttpResponse(response_data, mimetype='application/json')
 
@@ -173,5 +176,33 @@ def get_types(request):
     # return an HttpResponse with the JSON and the correct MIME type
     return HttpResponse(response_data, mimetype='application/json')
 
-#def receive_request_from_client(request,position):
+@csrf_exempt
+def update_location_driver(request):
+
+    lat = request.POST['latitude']
+    lon = request.POST['longitude']
+    coun = request.POST['country']
+    city = request.POST['city']
+    driver = request.POST['nid']
+
+    print "latitude " + lat
+    print "Longitude " + lon
+
+    current_driver = Driver.objects.get(nid=driver)
+
+    #updated_values = ({'latitude':lat, 'longitude':lon, 'city':city, 'country':coun})
+    #location, created = DriverLocation.objects.update_or_create(driver=current_driver, defaults=updated_values)
+
+    loc, created = DriverLocation.objects.get_or_create(driver=current_driver)
+
+    location = DriverLocation.objects.get(pk=loc.id)
+    location.latitude = lat
+    location.longitude = lon
+    location.city = city
+    location.country = coun
+    location.save()
+
+    return HttpResponse("OKAY")
+
+
 

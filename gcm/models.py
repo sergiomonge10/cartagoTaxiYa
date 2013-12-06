@@ -22,7 +22,14 @@ class Device(models.Model):
         verbose_name_plural = _("Devices")
         ordering = ['-modified_date']
 
-    def send_message(self, msg):
+    def send_message(self, msg,lat,lon,nid):
+        return send_gcm_message(
+            api_key=settings.GCM_APIKEY,
+            regs_id=[self.reg_id],
+            data={'msg': msg,'lat':lat, 'lon':lon,'nid':nid},
+            collapse_key="message")
+
+    def send_message_to_client(self,msg):
         return send_gcm_message(
             api_key=settings.GCM_APIKEY,
             regs_id=[self.reg_id],

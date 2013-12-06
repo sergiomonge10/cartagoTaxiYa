@@ -5,6 +5,7 @@ from django.contrib.auth.models import User, Group
 from rest_framework import viewsets, routers
 from cabbie.models import Driver, Car, TypeCar, Route
 from taxiya.views import contact_view
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -40,8 +41,10 @@ router.register(r'routers', RouterViewSet)
 
 
 urlpatterns = patterns('',
+   
     # Uncomment the admin/doc line below to enable admin documentation:
     #url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^client/', include('client.urls')),
     url(r'^cabbie/', include('cabbie.urls')),
     url(r'^company/', include('company.urls')),
 
@@ -52,8 +55,11 @@ urlpatterns = patterns('',
 
     url(r'^contact/$', view=contact_view, name="contact"),
 
+    url(r'^', include('gcm.urls')),
+
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 	url(r'^api/', include(router.urls)),
 	url(r'^api/', include('rest_framework.urls', namespace='rest_framework')),
 )
 
+urlpatterns += staticfiles_urlpatterns()

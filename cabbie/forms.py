@@ -9,7 +9,7 @@ class editDriverForm(forms.ModelForm):
         widgets = {
             'password': forms.PasswordInput(),
         }
-        exclude = ('object_id','company')
+        exclude = ('object_id','company','device')
 
 class editCarForm(forms.ModelForm):    
     class Meta:

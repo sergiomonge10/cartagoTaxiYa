@@ -12,11 +12,13 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 MANAGERS = ADMINS
 
+ADMIN_MEDIA_PREFIX = '/static/admin/'
+
 ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/company'
 
-GCM_APIKEY = "<api_key>"
+GCM_APIKEY = "AIzaSyAh0jyoY8mAyl611Qhlmj8i7VusPaSY-4o"
 
 ## Pull in CloudFoundry's production settings
 if 'VCAP_SERVICES' in os.environ:

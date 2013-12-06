@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-
 # Create your models here.
 
 # La Company es la empresa a la que pertenece un grupo de
@@ -18,3 +17,21 @@ class Company(models.Model):
 	def __unicode__(self):
 		#return u"Nombre:  %s - Usuario: %s " % (self.name, self.user.username)
 		return self.name
+
+class Location(models.Model):
+	lat = models.CharField(max_length=300)
+	lon = models.CharField(max_length=300)
+	city = models.CharField(max_length=300)
+	country = models.CharField(max_length=300)
+	
+	def __unicode__(self):
+		#return u"Nombre:  %s - Usuario: %s " % (self.name, self.user.username)
+		return self.lat
+
+class Prueba(models.Model):
+	description = models.CharField(max_length=100)
+
+	def __unicode__(self):
+		#return u"Nombre:  %s - Usuario: %s " % (self.name, self.user.username)
+		return self.description
+		
